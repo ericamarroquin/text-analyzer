@@ -35,6 +35,57 @@ function numberOfOccurrencesInText(word, text) {
   return wordCount;
 }
 
+function numberOfWordRepeats(text) {
+  let count = [];
+  let countedWords = [];
+  const wordArray = text.toLowerCase().split(" ");
+  wordArray.forEach(function(word) {
+    let num = numberOfOccurrencesInText(word, text);
+    if (!countedWords.includes(word)) {
+      countedWords.push(word);
+      count.push(num + " " + word);
+    }
+  })
+  let initialOutput = count.sort();
+  let finalOutput = initialOutput.reverse();
+  let finalOutputArray = (finalOutput[0] + " " + finalOutput[1] + " " + finalOutput[2]);
+  let strings = finalOutputArray.split(" ");
+
+  console.log(strings);
+  console.log(finalOutputArray);
+  return strings
+} 
+
+
+// function numberOfWordRepeats(text) {
+//   let count = [];
+//   let countedWords = [];
+//   const wordArray = text.split(" ");
+//   wordArray.forEach(function(word) {
+//     let num = numberOfOccurrencesInText(word, text);
+//     if (!countedWords.includes(word)) {
+//       count.push(num);
+//       countedWords.push(word);
+//     }
+//   })
+
+//   console.log(count);
+//   console.log(countedWords)
+// }
+
+
+// function numberOfWordRepeats(text) {
+//   let count = 0;
+//   const wordArray = text.split(" ");
+//   wordArray.forEach(function(word, index) {
+//     if (word === wordArray[index+1]) {
+//       count++
+//     }
+//   });
+//   return count;
+// }
+
+function 
 // UI Logic
 
 function boldPassage(word,text) {

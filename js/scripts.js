@@ -53,39 +53,13 @@ function numberOfWordRepeats(text) {
 
   console.log(strings);
   console.log(finalOutputArray);
-  return strings
+  let mostCommonWord = strings[1] + " : " + strings[0]
+  let secondMostCommon = strings[3] + " : " + strings[2]
+  let thirdMostCommon = strings[5] + " : " + strings[4]
+  let commonWordsArray = [mostCommonWord , secondMostCommon , thirdMostCommon];
+  return commonWordsArray;
 } 
 
-
-// function numberOfWordRepeats(text) {
-//   let count = [];
-//   let countedWords = [];
-//   const wordArray = text.split(" ");
-//   wordArray.forEach(function(word) {
-//     let num = numberOfOccurrencesInText(word, text);
-//     if (!countedWords.includes(word)) {
-//       count.push(num);
-//       countedWords.push(word);
-//     }
-//   })
-
-//   console.log(count);
-//   console.log(countedWords)
-// }
-
-
-// function numberOfWordRepeats(text) {
-//   let count = 0;
-//   const wordArray = text.split(" ");
-//   wordArray.forEach(function(word, index) {
-//     if (word === wordArray[index+1]) {
-//       count++
-//     }
-//   });
-//   return count;
-// }
-
-function 
 // UI Logic
 
 function boldPassage(word,text) {
@@ -107,6 +81,14 @@ function boldPassage(word,text) {
   return htmlString + "</p>";
 }
 
+function arrayToList(text) {
+  let htmlString = "";
+  text.forEach(function(element) {
+    htmlString = htmlString.concat("<li>" + element + "</li>");
+  })
+  return htmlString;
+}
+
 $(document).ready(function() {
   $("form#word-counter").submit(function(event) {
     event.preventDefault();
@@ -114,8 +96,10 @@ $(document).ready(function() {
     const word = $("#word").val();
     const wordCount = wordCounter(passage);
     const occurrencesOfWord = numberOfOccurrencesInText(word, passage);
+    const commonWords = numberOfWordRepeats(passage);
     $("#total-count").html(wordCount);
     $("#selected-count").html(occurrencesOfWord);
     $("#bolded-passage").html(boldPassage(word,passage));
+    $("#common-words").html(arrayToList(commonWords));
   });
 });
